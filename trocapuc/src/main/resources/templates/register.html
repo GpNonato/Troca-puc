@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="icon" type="image/png" th:href="@{/images/logo.png}">
+    <link rel="stylesheet" th:href="@{/css/general.css}">
+</head>
+
+<body>
+    <div class="container">
+        <nav class="auth">
+            <ul>
+                <li>
+                    <a th:href="@{/register}" class="active">
+                        <img th:src="@{/images/add.png}" alt="Register" class="nav-icon active">
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/login}">
+                        <img th:src="@{/images/login.png}" alt="Login" class="nav-icon">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <header>
+            <h2>Register</h2>
+        </header>
+        <main class="main-auth">
+            <section>
+                <form th:action="@{/register}" th:object="${userDTO}" method="post" class="authform">
+                    <input type="text" th:field="*{username}" id="username" placeholder="Username" required>
+                    <input type="text" th:field="*{cpf}" id="cpf" placeholder="CPF" required>
+                    <input type="text" th:field="*{telefone}" id="telefone" placeholder="Telefone" required>
+                    <input type="email" th:field="*{email}" id="email" placeholder="Email" required>
+                    <input type="password" th:field="*{password}" id="password" placeholder="Password" required>
+                    <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password"
+                        required>
+                    <button type="submit">Register</button>
+                </form>
+            </section>
+        </main>
+
+    </div>
+
+</body>
+
+</html>

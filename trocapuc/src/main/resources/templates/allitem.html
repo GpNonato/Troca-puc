@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Items</title>
+    <link rel="icon" type="image/png" th:href="@{/images/logo.png}">
+    <link rel="stylesheet" th:href="@{/css/general.css}">
+</head>
+
+<body>
+    <div class="container">
+
+        <nav>
+            <ul>
+                <li>
+                    <a id="notification-a">
+                        <img th:src="@{/images/notification.png}" alt="Notification" id="notification-img"
+                            class="nav-icon">
+                    </a>
+                </li>
+                <div class="notification-choice" style="display: none;">
+                    <ul>
+                        <li>
+                            <a th:href="@{/notification/sent}">
+                                <img th:src="@{/images/sent.png}" alt="Sent" class="nav-icon choice">
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{/notification/received}">
+                                <img th:src="@{/images/received.png}" alt="Received" class="nav-icon choice">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <li>
+                    <a id="market-a" class="active">
+                        <img th:src="@{/images/market.png}" alt="Market" id="market-img" class="nav-icon active">
+                    </a>
+                </li>
+                <div class="market-choice" style="display: none;">
+                    <ul>
+                        <li>
+                            <a th:href="@{/market/personal}">
+                                <img th:src="@{/images/profile.png}" alt="Personal" class="nav-icon choice">
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{/market/all}">
+                                <img th:src="@{/images/group.png}" alt="All" class="nav-icon choice">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <li>
+                    <a th:href="@{/search}">
+                        <img th:src="@{/images/search.png}" alt="Search" class="nav-icon">
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/profile}">
+                        <img th:src="@{/images/profile.png}" alt="Profile" class="nav-icon">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <header>
+            <h2>All Items</h2>
+        </header>
+
+        <main class="main-amarket">
+            <section class="cards-container">
+                <div th:each="item : ${items}" class="card">
+                    <div class="card-content">
+                        <img th:src="@{/image/{id}(id=${item.id})}" alt="Imagem do Item" class="card-image">
+                        <h3>Name: <span th:text="${item.name}"></span></h3>
+                        <p>Description: <span th:text="${item.description}"></span></p>
+                        <p>Category: <span th:text="${item.category}"></span></p>
+                        <p>Type: <span th:text="${item.type}"></span></p>
+                        <p th:if="${item.price != null}">Price: <span th:text="${item.price}"></span></p>
+                        <button th:data-category="${item.category}"
+                            th:data-item-id="${item.id}"
+                            onclick="openProposalModal(this.getAttribute('data-item-id'), this.getAttribute('data-category'))">
+                            Send Proposal
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+    </div>
+
+
+    <div class="proposalmodal" style="display: none;">
+        <div class="proposalmodal-header">
+            <span class="close" onclick="closeProposalModal()">&times;</span>
+        </div>
+        <div class="proposalmodal-content">
+            <form id="proposal-form" method="post">
+                <input type="hidden" id="item-id" name="itemId">
+
+                <!-- Campo de preço -->
+                <div id="price-field" style="display: none;">
+                    <label for="price">Price:</label>
+                    <input type="number" id="price" name="price" step="0.01" min="0">
+                </div>
+
+                <div>
+                    <label for="description">Description:</label>
+                    <input type="text" id="description" name="description" required>
+                </div>
+                <button type="submit">Send Proposal</button>
+            </form>
+        </div>
+    </div>
+    <script th:src="@{/js/general.js}"></script>
+</body>
+
+</html>

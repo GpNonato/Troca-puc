@@ -1,0 +1,41 @@
+cff-version: 1.0.1
+message: Please cite this software using these metadata.
+title: Troca Puc
+authors:
+  - family-names: Luiz Parreiras Lima
+    given-names: Felipe 
+  - family-names: Fernanda Silva Pinto
+    given-names: Gabriella 
+  - family-names: Pedrosa do Carmo Nonato
+    given-names: Gabriel 
+  - family-names: de Freitas Moura
+    given-names: Kayler 
+  - family-names: dos Reis Santos
+    given-names: Natália 
+  - family-names: Henrique Silva Vargas
+    given-names: Pedro 
+  - name-suffix: Professor
+    affiliation: PUC Minas
+    family-names: Neto
+    given-names: Cristiano de Macedo
+  - name-suffix: Professora
+    affiliation: PUC Minas
+    family-names: Norberta de Brito
+    given-names: Aline
+  - name-suffix: Professora
+    affiliation: PUC Minas
+    family-names: Amaral
+    given-names: Cleia Marcia Gomes
+keywords:
+  - Troca
+  - Puc
+  - Troca Puc
+  - Venda
+  - Material Escolar
+  - Material
+  - Doacao
+  - Faculdade
+repository-code: https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2024-2-ti2-1381100-tis2-24-2-troca-puc.git
+license: CC-BY-4.0
+version: 1.0.0
+date-released: 2024-12-10
